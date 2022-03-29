@@ -73,11 +73,20 @@ footer.page-footer {
 
 h2 {
  color: #4ba4ff ;
- font-weight: 500;
+ font-weight: 600;
  text-transform: uppercase;
  font-family: 'Helvetica';
+ margin-bottom: 12% !important;
 }
 
 #loginButton {
   background-color: #4ba4ff;
+}
+
+#api {
+  margin-bottom: 10% !important;
+}
+
+#pin {
+  margin-bottom: 8% !important;
 }

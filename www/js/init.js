@@ -16,25 +16,23 @@ function onDeviceReady() {
 
     //LoginButton onclick function
     $("#loginButton").click(function(){
-      let pin = $("#pin").val();
-      let pinList = [1234,1111];
-      let sToken;
-      //We identify the API to be used
-      let usedAPI = $('#URL').val();
-      
-      let isValid= false;
-      //Pin check
-      for(let i = 0;i<pinList.length;i++){
-        if (pinList[i]==pin){
-          isValid=true;
+
+      $.ajax({
+        method: "GET",
+        url: $('#URL').val()+"/api/start_vr_exercise",
+        data : {"pin":String($('.validate').val())},
+        dataType: "json",
+      }).done(function (info) {
+
+        if(info["status"] == "OK"){
+          alert("Pin correcte");
+        }else{
+          alert(info['message']);
         }
-      }
-      if(isValid){
-        alert("Pin correcte");
-      }else{
-        alert("Error: Introdueix el pin correcte");
-      }
-      
+
+      }).fail(function(){
+        alert("URL no valida");
+      });      
       
       //Page reload prevention
       return false;
